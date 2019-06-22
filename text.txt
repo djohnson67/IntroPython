@@ -6,6 +6,17 @@ drinks = {
 'screwdriver':{'orange juice','vodka'}
 }   
 
+life = {
+  'animals':{
+    'cats':{'Henri','Grumpy','Lucy'},
+    'octopi':{},
+    'emus':{}
+  },
+  'plants':'',
+  'others':''
+}
+
+
 for name, contents in drinks.items():
   if 'vodka' in contents:
     print(name)
@@ -39,6 +50,8 @@ wruss >= bruss
 bruss > wruss #proper superset first set must have all members of the second and more
 wruss > bruss
 
+years_list = [1967, 1968,1969,1970,1971]
+things=['mozzarella','cinderalle','salmonell']
 
 a = {1,2}
 b = {2,3}
