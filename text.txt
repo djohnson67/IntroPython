@@ -1,0 +1,48 @@
+drinks = {
+'martini':{'vodka','vermouth'},
+'black russian':{'vodka','kahlua'},
+'white russian':{'vodka','kahlua','cream'},
+'manhattan':{'rye','vermouth','vodka'},
+'screwdriver':{'orange juice','vodka'}
+}   
+
+for name, contents in drinks.items():
+  if 'vodka' in contents:
+    print(name)
+
+for name, contents in drinks.items():
+    if 'vodka' in contents and not ('vermouth' in contents or 'cream' in contents):
+        print(name)
+
+#using the & is a set, which contains all the items that appear in both lists
+for name, contents in drinks.items():
+  if contents & {'vermouth','orange juice'}:
+    print(name)
+
+for name, contents in drinks.items():
+  if 'vodka' in contents and not contents & {'vermouth','cream'}:
+    print(name)
+
+bruss = drinks['black russian']
+wruss = drinks['white russian']
+bruss & wruss #intersection
+bruss | wruss #union
+bruss - wruss #member of first set but not second set
+wruss - bruss
+bruss ^ wruss #exclussive
+bruss <= wruss #subset of all members of first set are also members of second
+wruss <= bruss 
+bruss < wruss #proper subset second set must have all members of the first and more
+wruss < bruss
+bruss >= wruss #superset of all members of second set are also members of first
+wruss >= bruss 
+bruss > wruss #proper superset first set must have all members of the second and more
+wruss > bruss
+
+
+a = {1,2}
+b = {2,3}
+a & b
+a.intersection(b)
+a | b
+a.union(b)
