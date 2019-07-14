@@ -1,0 +1,135 @@
+def commentary(color):
+  if color == 'red':
+    return "It's a tomato"
+  elif color == 'green':
+    return "it's a green pepper"
+  elif color == 'bee purple':
+    return "I don't know what it is, but only bees can see it."
+  else:
+    return "I've never heard of the color "+ color + "."
+
+def buggy(arg, result=[]):
+  result.append(arg)
+  print(result)
+
+def nonbuggy(arg, result=None):
+  if result is None:
+    result = []
+  result.append(arg)
+  print(result)
+
+def print_more(required1, required2, *args):
+  print('need this one', required1)
+  print('need this one too', required2)
+  print('All the rest', args)
+
+print_more('cap', 'gloves','scarf', 'monocle', 'mustache wax' )
+
+def print_kwargs(**kwargs):
+  print('keyword arguments:', kwargs)
+
+print_kwargs(wine='merlot', entree='mutton',dessert='macaroon')
+
+def answer():
+  print(42)
+
+def run_something(func):
+  func()
+
+def add_args(ars1, args2):
+  print(ars1 + args2)
+
+def run_something_with_args(func, args1, args2):
+  func(args1,args2)
+
+run_something_with_args(add_args, 20, 22)
+
+def knights(saying):
+  def inner(quote):
+    return "We are the knights who say: '%s'", quote
+  return inner(saying)
+
+knights('Ni')
+
+def knights2(saying):
+  def inner2():
+    return "We are the knights who say: '%s'", saying
+  return inner2()
+
+def edit_story(words, func):
+  for word in words:
+    print(func(word))
+
+stairs = ['thud','meow', 'thud', 'hiss']
+
+def enlvin(word):
+  return (word.capitalize() + '!')
+
+edit_story(stairs,enlvin)
+
+edit_story(stairs,lambda word: word.capitalize() + '!')
+
+#a decorator is a function that takes one function as input and returns another function
+
+def documentIt(func):
+  def newFunction(*args, **kwargs):
+    print('Running function:', func.__name__)
+    print('Positional arguments:', args)
+    print('keyword arguments:', kwargs)
+    result = func(*args,**kwargs)
+    print('result:', result)
+    return result
+  return newFunction
+
+#how to use it
+def addInts(a,b):
+  return a + b
+
+coolerAddInts = documentIt(addInts)
+coolerAddInts(3,4)
+
+@documentIt
+def addInts(a,b):
+  return a + b
+
+def squareIt(func):
+  def newFunction(*args,**kwargs):
+    result = func(*args,**kwargs)
+    return result * result
+  return newFunction
+
+@squareIt
+@documentIt
+def addInts(a,b):
+  return a + b
+
+periodic_table = {'Hydrogen':1,'Helium':2}
+print(periodic_table)
+carbon = periodic_table.setdefault('Carbon',12)
+carbon
+Helium = periodic_table.setdefault('Helium',546)
+Helium
+
+from collections import defaultdict
+periodic_table = defaultdict(int)
+periodic_table['Hydrogen'] = 1
+periodic_table['Lead']
+
+from collections import defaultdict
+food_counter = defaultdict(int)
+for food in ['spam','spam','eggs','spam']:
+  food_counter[food] += 1
+
+for food, count in food_counter.items():
+  print(food,count)
+
+from collections import Counter
+breakfast = ['spam','spam','eggs','spam']
+breakfast_couner = Counter(breakfast)
+breakfast_couner
+
+lunch = ['eggs','eggs','bacon']
+lunch_counter = Counter(lunch)
+lunch_counter
+
+breakfast_couner + lunch_counter
