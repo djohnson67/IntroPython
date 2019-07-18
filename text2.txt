@@ -102,34 +102,3 @@ def squareIt(func):
 @documentIt
 def addInts(a,b):
   return a + b
-
-periodic_table = {'Hydrogen':1,'Helium':2}
-print(periodic_table)
-carbon = periodic_table.setdefault('Carbon',12)
-carbon
-Helium = periodic_table.setdefault('Helium',546)
-Helium
-
-from collections import defaultdict
-periodic_table = defaultdict(int)
-periodic_table['Hydrogen'] = 1
-periodic_table['Lead']
-
-from collections import defaultdict
-food_counter = defaultdict(int)
-for food in ['spam','spam','eggs','spam']:
-  food_counter[food] += 1
-
-for food, count in food_counter.items():
-  print(food,count)
-
-from collections import Counter
-breakfast = ['spam','spam','eggs','spam']
-breakfast_couner = Counter(breakfast)
-breakfast_couner
-
-lunch = ['eggs','eggs','bacon']
-lunch_counter = Counter(lunch)
-lunch_counter
-
-breakfast_couner + lunch_counter
