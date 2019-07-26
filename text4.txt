@@ -1,0 +1,16 @@
+class word:
+  def __init__(self,text):
+    self.text = text
+  def equals(self,word2):
+    return self.text.lower() == word2.text.lower()
+  def __eq__(self,word2):
+    return self.text.lower() == word2.text.lower()
+  def __str(self):
+    return self.text
+  def __repr__(self):
+    return 'word("'+self.text+'")'
+
+
+first = word('ha')
+second = word('HA')
+third = word('dfdf')
