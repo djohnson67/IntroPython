@@ -14,3 +14,27 @@ class word:
 first = word('ha')
 second = word('HA')
 third = word('dfdf')
+
+class Bill():
+  def __init__(self, description):
+    self.description = description
+class Tail():
+  def __init__(self, length):
+    self.length = length
+class Duck():
+  def __init__(self,bill,tail):
+    self.bill = bill
+    self.tail = tail
+  def about(self):
+    print('This duck has a', self.bill.description,'bill and a',self.tail.length,'tail')
+
+aTail = Tail('long')
+aBill = Bill('wide orange')
+aDuck = Duck(aBill,aTail)
+aDuck.about()
+
+#namedTuple
+from collections import namedtuple
+Duck = namedtuple('Duck', 'bill tail')
+duck = Duck('wide orange', 'super long')
+duck

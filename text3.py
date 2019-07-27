@@ -59,3 +59,111 @@ def multiply(a,b):
 for item in itertools.accumulate([1,2,3,4]):
     print(item)
 
+class Car():
+  def exlaim(self):
+    print("I'm a car!")
+
+class Yugo(Car):
+    def exlaim(self):
+      print("I'm a Yugo, a not so fancy car")
+    def NeedAPush(self):
+      print('A little help here...')
+
+giveMeACar = Car()
+giveMeAYugo = Yugo()
+giveMeACar.exlaim()
+giveMeAYugo.exlaim()
+giveMeAYugo.NeedAPush()
+
+#one way to do properties
+class Duck():
+  def __init__(self, inputName):
+    self.hiddenName = inputName
+  def getName(self):
+    print('getter')
+    return self.hiddenName
+  def setName(self, inputName):
+    self.hiddenName = inputName
+    print('setter')
+  name = property(getName,setName)
+
+fowl = Duck('Howard')
+
+#with decorators
+class Mouse():
+  def __init__(self, inputName):
+    self.__hiddenName = inputName
+  @property
+  def name(self):
+    print('getter')
+    return self.__hiddenName
+  @name.setter
+  def name(self, inputName):
+    self.__hiddenName = inputName
+    print('setter')
+
+#class methods - methods that affect the class as a whole
+class A():
+  count = 0
+  def __init__(self):
+    A.count += 1
+  def exclaim(self):
+    print('I am an A')
+  @classmethod
+  def kids(cls):
+    print('A has', cls.count, 'little objects.')
+  
+easyA = A()
+breazyA = A()
+CheesyA = A()
+A.kids()
+
+#static methods
+class CoyoteWeapon():
+  @staticmethod
+  def commercial():
+    print('This CoyotoeWeapon has been brought to you by Acme.')
+
+CoyoteWeapon.commercial()
+
+#typing
+class Quote():
+  def __init__(self,person,words):
+    self.person = person
+    self.words = words
+  def who(self):
+    return self.person
+  def says(self):
+    return self.words + '.'
+  
+class Question(Quote):
+  def says(self):
+    return self.words + '?'
+
+class Exclamation(Quote):
+  def says(self):
+    return self.words +'!'
+
+hunter = Quote('Elmer Fudd','I am hunting wabbits')
+print(hunter.who(), 'says:',hunter.says())
+
+hunted1 = Question('Bugs Bunny','What\'s up doc')
+print(hunted1.who(), 'says:',hunted1.says())
+
+hunted2 = Exclamation('Daffy Duck','It\'s rabbit season')
+print(hunted2.who(), 'says:',hunted2.says())
+
+class BabblingBrook():
+  def who(self):
+    return 'Brook'
+  def says(self):
+    return 'Babble'
+brook = BabblingBrook()
+
+def whoSays(obj):
+  print(obj.who(), 'says:',  obj.says())
+
+whoSays(hunter)
+whoSays(hunted1)
+whoSays(hunted2)
+whoSays(brook)
