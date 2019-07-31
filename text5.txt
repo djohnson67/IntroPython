@@ -5,3 +5,29 @@ def unicodeTest(value):
   print('value="%s", name="%s", value2="%s"' %(value,name,value2))
 
   unicodeTest('A')
+snowman = '\u2603'
+len(snowman)
+ds = snowman.encode('utf-8')
+len(ds)
+
+'{0:!^20s}'.format('BIG SALE')
+
+import re
+source = 'Young Frankenstein'
+m = re.match('You', source)
+if m:
+  print(m.group())
+
+import string
+printable = string.printable
+len(printable)
+printable[0:50]
+re.findall('\d',printable)
+
+source = '''I wish I may, I wish I might 
+Have a dish of fish tonight.'''
+re.findall('wish',source) #find wish
+re.findall('wish|fish',source) #fish or wish
+re.findall('^I wish',source)
+re.findall('fish tonight.$',source)
+re.findall('[wf]ish',source) w or f followed by ish
