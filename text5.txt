@@ -31,3 +31,6 @@ re.findall('wish|fish',source) #fish or wish
 re.findall('^I wish',source)
 re.findall('fish tonight.$',source)
 re.findall('[wf]ish',source) w or f followed by ish
+
+import struct
+struct.pack('>L',154)

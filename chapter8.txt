@@ -1,0 +1,66 @@
+poem = '''There was a young lady named bright,
+Whose speed was far faster than light;
+She started one day
+In a rellative way,
+And returned on the previous night.'''
+len(poem)
+
+fout = open('relativity', 'wt')
+fout.write(poem)
+fout.close()
+
+fout = open('relativity', 'wt')
+print(poem, file=fout, sep='', end='')
+fout.close()
+
+fin = open('relativity','rt')
+poem = fin.read()
+fin.close()
+len(poem)
+
+import csv
+villians = [
+  ['Doctor','No'],
+  ['Rosa','Kleb'],
+  ['Mister','Big'],
+  ['Auric','Goldfinger'],
+  ['Ernst','Blofeld']
+]
+with open('villians','w',newline='') as fout: #a context manager
+  csvout = csv.writer(fout)
+  csvout.writerows(villians)
+
+with open('villians','r') as fin:
+  cin = csv.reader(fin)
+  villians = [row for row in cin] #list comprehension p.85
+
+with open('villians','r') as fin:
+  cin = csv.DictReader(fin, fieldnames =['first','last'])
+  villians = [row for row in cin]
+print(villians)
+
+fin = open('relativity','rt')
+lines = fin.readlines()
+fin.close()
+print(len(lines), 'lines read')
+for line in lines:
+  print(line, end='')
+
+  #close automagically
+
+villians = [
+  {'first':'Doctor','last':'No'},
+  {'first':'Rosa','last':'Kleb'},
+  {'first':'Mister','last':'Big'},
+  {'first':'Auric','last':'Goldfinger'},
+  {'first':'Ernst','last':'Blofeld'}
+]
+with open('villians','w',newline='') as fout:
+  cout = csv.DictWriter(fout,['first','last'])
+  cout.writeheader()
+  cout.writerows(villians)
+
+with open('villians','r') as fin:
+  cin = csv.DictReader(fin)
+  villians = [row for row in cin]
+  
