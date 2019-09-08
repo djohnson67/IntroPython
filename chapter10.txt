@@ -1,0 +1,5 @@
+import os
+os.mkdir('poems')
+os.path.exists('poems')
+os.rmdir('poems')
+os.path.exists('poems')
